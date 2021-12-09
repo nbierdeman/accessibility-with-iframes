@@ -1,18 +1,24 @@
 <!DOCTYPE html>
 <html lang="en">
+<!-- it's not possible to use the 'hidden' attribut with <head> -->
 <head>
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <!-- if there isn't a <title> for embedded iframe content, the screenreader will say 'frame #' -->
+  <!-- using the 'hidden' attribute for <title>, or adding style="visibility: hidden" or style="display: none", has no effect on the screenreader rotor articles menu or keyboard focus -->
   <title>Outer iFrame Document Title</title>
 </head>
+<!-- using the 'hidden' attribute on <body> hides child elements, such as <p>'s and <iframe>'s -->
 <body>
-  <p>
+  <!-- it's possible to hide some content from the screenreader rotor articles menu and keyboard focus using the 'hidden' attribute, while still leaving sibling elements, such as another iframe, untouched -->
+  <p hidden>
     Outer iFrame document body content.
   </p>
   <iframe 
   title="Inner iFrame Title Attribute"
   src="./inner-iframe-content-page.html"
+  aria-hidden="true"
   >
   </iframe>
 </body>
